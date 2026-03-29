@@ -1,0 +1,8 @@
+{
+  "name": "palm-and-passport",
+  "version": "1.0.0",
+  "description": "Palm & Passport — Panama Relocation Concierge",
+  "scripts": {
+    "build": "echo 'Static site'"
+  }
+}
