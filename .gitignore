@@ -1,0 +1,13 @@
+# Source files not needed for deployment
+hero vid.mp4
+option_a_tropical_luxury.html
+option_a_tropical_luxury_BACKUP.html
+prompts.html
+IMG_9936.JPG.jpeg
+
+# Claude Code
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db
