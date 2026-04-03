@@ -12,6 +12,8 @@
     content="Your personal guide to relocating to Panama. Residency, real estate, and lifestyle — handled.">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#14120e">
+  <link rel="icon" type="image/png" href="Logo Palm &amp; Passport (2).png">
+  <link rel="apple-touch-icon" href="Logo Palm &amp; Passport (2).png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -117,7 +119,6 @@
     .nav-logo-img {
       height: 40px;
       width: auto;
-      /* REPLACE src with base64: data:image/png;base64,<Logo_Palm__Passport_2.png output> */
     }
 
     /* Placeholder shown when no logo image is available */
@@ -1845,7 +1846,6 @@
     .nav-logo-img {
       height: 40px;
       width: auto;
-      /* REPLACE src with base64: data:image/png;base64,<Logo_Palm__Passport_2.png output> */
     }
 
     /* Placeholder shown when no logo image is available */
@@ -3868,6 +3868,16 @@
         align-items: center;
       }
     }
+
+    /* Hero text entrance — children start hidden until canvas loads */
+    #heroContent .hero-eyebrow,
+    #heroContent h1,
+    #heroContent .hero-subheadline,
+    #heroContent .hero-ctas,
+    #heroContent .hero-trust {
+      opacity: 0;
+      transform: translateY(20px);
+    }
   </style>
 </head>
 
@@ -3876,8 +3886,7 @@
   <!-- NAVIGATION -->
   <nav id="navbar">
     <a href="#" class="nav-logo">
-      <!-- REPLACE div below with: <img class="nav-logo-img" src="data:image/png;base64,<Logo_Palm__Passport_2.png>" alt="Palm & Passport"> -->
-      <div class="nav-logo-placeholder">🌴</div>
+      <img class="nav-logo-img" src="Logo Palm &amp; Passport (2).png" alt="Palm &amp; Passport">
       <span class="nav-logo-text">Palm &amp; Passport</span>
     </a>
     <ul class="nav-links" id="navLinks">
@@ -4681,6 +4690,39 @@
 
       startAuto();
     })();
+  </script>
+
+  <!-- Hero entrance animation via Motion -->
+  <script type="module">
+    import { animate, stagger } from "https://cdn.jsdelivr.net/npm/motion@latest/+esm";
+
+    function runHeroEntrance() {
+      const heroEls = [
+        ...document.querySelectorAll(
+          '#heroContent .hero-eyebrow, #heroContent h1, ' +
+          '#heroContent .hero-subheadline, #heroContent .hero-ctas, ' +
+          '#heroContent .hero-trust'
+        )
+      ];
+      animate(
+        heroEls,
+        { opacity: [0, 1], y: [20, 0] },
+        { duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay: stagger(0.15, { start: 0.1 }) }
+      );
+    }
+
+    const heroLoader = document.getElementById('heroLoader');
+    if (!heroLoader || heroLoader.classList.contains('hidden')) {
+      runHeroEntrance();
+    } else {
+      const obs = new MutationObserver(() => {
+        if (heroLoader.classList.contains('hidden')) {
+          obs.disconnect();
+          runHeroEntrance();
+        }
+      });
+      obs.observe(heroLoader, { attributes: true, attributeFilter: ['class'] });
+    }
   </script>
 </body>
 
