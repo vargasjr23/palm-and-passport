@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEO Strategy Report — mypalmandpassport.com</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #0a0a0f; --bg-card: rgba(255,255,255,0.03); --bg-card-hover: rgba(255,255,255,0.06);
+    --border: rgba(255,255,255,0.08); --border-hover: rgba(255,255,255,0.15);
+    --text: #e8e8ed; --text-secondary: #8b8b9e; --text-muted: #5a5a6e;
+    --accent: #6366f1; --accent-glow: rgba(99,102,241,0.3);
+    --green: #22c55e; --green-bg: rgba(34,197,94,0.12); --green-border: rgba(34,197,94,0.25);
+    --yellow: #eab308; --yellow-bg: rgba(234,179,8,0.12); --yellow-border: rgba(234,179,8,0.25);
+    --red: #ef4444; --red-bg: rgba(239,68,68,0.12); --red-border: rgba(239,68,68,0.25);
+    --blue: #3b82f6; --blue-bg: rgba(59,130,246,0.12);
+    --orange: #f97316; --orange-bg: rgba(249,115,22,0.12); --orange-border: rgba(249,115,22,0.25);
+    --purple: #a78bfa; --purple-bg: rgba(167,139,250,0.08); --purple-border: rgba(167,139,250,0.15);
+    --radius: 16px; --radius-sm: 10px; --radius-xs: 6px;
+  }
+  ::selection { background: var(--accent); color: white; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at 20% 50%, rgba(99,102,241,0.06) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(139,92,246,0.04) 0%, transparent 50%), radial-gradient(ellipse at 50% 80%, rgba(59,130,246,0.03) 0%, transparent 50%); z-index: -1; animation: ambientDrift 20s ease-in-out infinite; }
+  @keyframes ambientDrift { 0%, 100% { transform: translate(0,0); } 33% { transform: translate(-2%,1%); } 66% { transform: translate(1%,-1%); } }
+  ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: transparent; } ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .header { padding: 40px 0 0; text-align: center; }
+  .header-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 100px; font-size: 12px; font-weight: 500; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 20px; }
+  .header-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 8px var(--green); animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  .header h1 { font-family: 'Space Grotesk', sans-serif; font-size: 42px; font-weight: 700; line-height: 1.15; margin-bottom: 12px; background: linear-gradient(135deg, #fff 0%, #a5a5c0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .header .subtitle { font-size: 16px; color: var(--text-secondary); margin-bottom: 32px; }
+  .score-section { display: flex; align-items: center; gap: 48px; margin-bottom: 40px; padding: 40px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); backdrop-filter: blur(20px); }
+  .score-circle-wrap { position: relative; flex-shrink: 0; }
+  .score-circle { width: 180px; height: 180px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-direction: column; position: relative; }
+  .score-circle svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; transform: rotate(-90deg); }
+  .score-circle svg circle { fill: none; stroke-width: 6; stroke-linecap: round; }
+  .score-circle svg .bg-ring { stroke: rgba(255,255,255,0.06); }
+  .score-circle svg .progress-ring { stroke: var(--orange); stroke-dasharray: 502; stroke-dashoffset: 261; filter: drop-shadow(0 0 6px rgba(249,115,22,0.3)); transition: stroke-dashoffset 1.5s ease-out; }
+  .score-number { font-family: 'Space Grotesk', sans-serif; font-size: 56px; font-weight: 700; line-height: 1; color: white; position: relative; z-index: 1; }
+  .score-grade { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; color: var(--orange); text-transform: uppercase; letter-spacing: 1px; position: relative; z-index: 1; margin-top: 2px; }
+  .score-label { font-size: 13px; color: var(--text-secondary); font-weight: 500; position: relative; z-index: 1; margin-top: 4px; }
+  .score-details { flex: 1; }
+  .score-details h2 { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600; margin-bottom: 8px; }
+  .score-details p { color: var(--text-secondary); font-size: 15px; line-height: 1.7; margin-bottom: 20px; }
+  .sub-scores { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; }
+  .sub-score { padding: 14px 16px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: var(--radius-sm); }
+  .sub-score-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 6px; }
+  .sub-score-value { font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 700; }
+  .sub-score-bar { height: 3px; border-radius: 2px; background: rgba(255,255,255,0.06); margin-top: 8px; overflow: hidden; }
+  .sub-score-bar-fill { height: 100%; border-radius: 2px; }
+  .tabs { position: sticky; top: 0; z-index: 100; background: rgba(10,10,15,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+  .tabs-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; }
+  .tabs-inner::-webkit-scrollbar { display: none; }
+  .tab-btn { padding: 16px 24px; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; color: var(--text-muted); background: none; border: none; border-bottom: 2px solid transparent; cursor: pointer; white-space: nowrap; transition: all 0.2s; }
+  .tab-btn:hover { color: var(--text-secondary); }
+  .tab-btn.active { color: var(--text); border-bottom-color: var(--accent); }
+  .tab-btn .tab-count { display: inline-flex; align-items: center; justify-content: center; min-width: 20px; height: 20px; padding: 0 6px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 100px; font-size: 11px; font-weight: 600; margin-left: 8px; color: var(--text-secondary); }
+  .tab-btn.active .tab-count { background: var(--accent); border-color: var(--accent); color: white; }
+  .tab-content { display: none; padding: 40px 0 80px; }
+  .tab-content.active { display: block; }
+  .section-title { font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+  .section-subtitle { color: var(--text-secondary); font-size: 15px; margin-bottom: 24px; }
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin-bottom: 40px; }
+  .stat-card { padding: 24px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); text-align: center; transition: border-color 0.2s; }
+  .stat-card:hover { border-color: var(--border-hover); }
+  .stat-value { font-family: 'Space Grotesk', sans-serif; font-size: 36px; font-weight: 700; color: white; margin-bottom: 4px; }
+  .stat-label { font-size: 13px; color: var(--text-secondary); }
+  .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; margin-bottom: 16px; transition: border-color 0.2s; }
+  .card:hover { border-color: var(--border-hover); }
+  .card-title { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 600; display: flex; align-items: center; gap: 12px; }
+  .badge { display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; letter-spacing: 0.3px; }
+  .badge-critical { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-border); }
+  .badge-high { background: var(--orange-bg); color: var(--orange); border: 1px solid var(--orange-border); }
+  .badge-medium { background: var(--yellow-bg); color: var(--yellow); border: 1px solid var(--yellow-border); }
+  .badge-low { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
+  .badge-pass { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
+  .badge-warning { background: var(--yellow-bg); color: var(--yellow); border: 1px solid var(--yellow-border); }
+  .badge-fail { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-border); }
+  .badge-done { background: rgba(99,102,241,0.12); color: var(--accent); border: 1px solid rgba(99,102,241,0.25); }
+  .finding { padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.04); display: grid; grid-template-columns: auto 1fr auto; gap: 16px; align-items: start; }
+  .finding:last-child { border-bottom: none; }
+  .finding-status { width: 8px; height: 8px; border-radius: 50%; margin-top: 8px; }
+  .finding-status.pass { background: var(--green); box-shadow: 0 0 6px rgba(34,197,94,0.4); }
+  .finding-status.warning { background: var(--yellow); box-shadow: 0 0 6px rgba(234,179,8,0.4); }
+  .finding-status.fail { background: var(--red); box-shadow: 0 0 6px rgba(239,68,68,0.4); }
+  .finding-status.fixed { background: var(--accent); box-shadow: 0 0 6px var(--accent-glow); }
+  .finding-content h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .finding-content p { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+  .finding-rec { margin-top: 8px; padding: 10px 14px; background: rgba(99,102,241,0.06); border-left: 3px solid var(--accent); border-radius: 0 var(--radius-xs) var(--radius-xs) 0; font-size: 13px; color: var(--text); line-height: 1.5; }
+  .finding-done { margin-top: 8px; padding: 10px 14px; background: var(--green-bg); border-left: 3px solid var(--green); border-radius: 0 var(--radius-xs) var(--radius-xs) 0; font-size: 13px; color: var(--green); line-height: 1.5; }
+  .collapsible { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); margin-bottom: 12px; overflow: hidden; transition: border-color 0.2s; }
+  .collapsible:hover { border-color: var(--border-hover); }
+  .collapsible-header { padding: 20px 24px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; }
+  .collapsible-header:hover { background: rgba(255,255,255,0.02); }
+  .collapsible-title { font-weight: 600; color: var(--text); font-size: 14px; display: flex; align-items: center; gap: 12px; }
+  .collapsible-body { overflow: hidden; max-height: 0; transition: max-height 0.35s ease; }
+  .collapsible.open .collapsible-body { max-height: 5000px; }
+  .collapsible-body-inner { padding: 0 24px 24px; }
+  .collapse-icon { width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--text-muted); transition: transform 0.3s; flex-shrink: 0; }
+  .collapsible.open .collapse-icon { transform: rotate(180deg); }
+  .page-table { width: 100%; border-collapse: collapse; }
+  .page-table th { text-align: left; padding: 12px 16px; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); border-bottom: 1px solid var(--border); font-weight: 600; }
+  .page-table td { padding: 12px 16px; font-size: 14px; border-bottom: 1px solid rgba(255,255,255,0.03); vertical-align: top; }
+  .page-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .page-url { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--accent); }
+  .checklist-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .checklist-item:last-child { border-bottom: none; }
+  .check-icon { width: 22px; height: 22px; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 12px; margin-top: 1px; }
+  .check-icon.pass { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
+  .check-icon.fail { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-border); }
+  .check-icon.warn { background: var(--yellow-bg); color: var(--yellow); border: 1px solid var(--yellow-border); }
+  .check-icon.done { background: rgba(99,102,241,0.12); color: var(--accent); border: 1px solid rgba(99,102,241,0.25); }
+  .check-text { font-size: 14px; color: var(--text); }
+  .check-text.muted { color: var(--text-secondary); }
+  .action-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 24px; margin-bottom: 12px; display: flex; gap: 20px; align-items: flex-start; transition: border-color 0.2s; }
+  .action-item:hover { border-color: var(--border-hover); }
+  .action-number { font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 700; color: var(--accent); flex-shrink: 0; width: 36px; text-align: center; opacity: 0.5; }
+  .action-content { flex: 1; }
+  .action-title { font-weight: 600; color: var(--text); font-size: 15px; margin-bottom: 6px; }
+  .action-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+  .action-impact { margin-top: 8px; font-size: 13px; color: var(--green); font-weight: 500; }
+  .keyword-tag { display: inline-block; padding: 3px 10px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 100px; font-size: 12px; font-family: 'JetBrains Mono', monospace; margin: 2px 4px 2px 0; color: var(--text-secondary); }
+  .lsi-cloud { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .lsi-tag { padding: 6px 14px; border-radius: 100px; font-size: 13px; font-family: 'JetBrains Mono', monospace; transition: all 0.2s; }
+  .lsi-tag.integrated { background: var(--green-bg); border: 1px solid var(--green-border); color: var(--green); }
+  .lsi-tag.missing { background: var(--red-bg); border: 1px solid var(--red-border); color: var(--red); opacity: 0.8; }
+  .lsi-tag.added { background: rgba(99,102,241,0.12); border: 1px solid rgba(99,102,241,0.25); color: var(--accent); }
+  .competitor-card { padding: 20px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: var(--radius-sm); margin-bottom: 12px; }
+  .competitor-rank { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: white; font-size: 13px; font-weight: 700; margin-right: 12px; flex-shrink: 0; }
+  .competitor-title { font-weight: 600; font-size: 15px; margin-bottom: 4px; display: flex; align-items: center; }
+  .competitor-url { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-muted); margin-bottom: 12px; }
+  .competitor-meta { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
+  .competitor-meta-item { font-size: 12px; color: var(--text-secondary); }
+  .competitor-meta-item strong { color: var(--text); }
+  .competitor-topics h5 { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 8px; }
+  .fixed-banner { padding: 14px 20px; background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.2); border-radius: var(--radius-sm); color: var(--accent); font-size: 14px; font-weight: 500; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+  @media (max-width: 768px) { .header h1 { font-size: 28px; } .score-section { flex-direction: column; text-align: center; padding: 24px; gap: 24px; } .stats-grid { grid-template-columns: repeat(2, 1fr); } .sub-scores { grid-template-columns: repeat(2, 1fr); } .action-item { flex-direction: column; gap: 12px; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="container">
+    <div class="header-badge"><span class="dot"></span> SEO Audit Report</div>
+    <h1>mypalmandpassport.com</h1>
+    <p class="subtitle">Single-page SEO audit — 1 page analyzed — Generated April 15, 2026</p>
+  </div>
+</div>
+
+<div class="container" style="padding-top: 0; padding-bottom: 32px;">
+  <div class="score-section">
+    <div class="score-circle-wrap">
+      <div class="score-circle">
+        <svg viewBox="0 0 160 160">
+          <circle class="bg-ring" cx="80" cy="80" r="74"/>
+          <circle class="progress-ring" cx="80" cy="80" r="74"/>
+        </svg>
+        <span class="score-number">48</span>
+        <span class="score-grade">D — Poor</span>
+        <span class="score-label">Pre-fix score</span>
+      </div>
+    </div>
+    <div class="score-details">
+      <h2>Strong foundation, critical technical gaps</h2>
+      <p>The page has excellent content structure, a compelling H1, and a keyword-optimized title tag. However, it is missing almost every technical SEO requirement: no schema markup, no canonical tag, no sitemap, no Twitter cards, and incomplete Open Graph data. These are all fixable — and most were fixed automatically during this audit. The post-fix estimated score is <strong style="color: var(--green);">71</strong>.</p>
+      <div class="sub-scores">
+        <div class="sub-score">
+          <div class="sub-score-label">Technical</div>
+          <div class="sub-score-value" style="color: var(--red)">35</div>
+          <div class="sub-score-bar"><div class="sub-score-bar-fill" style="width:35%; background: var(--red)"></div></div>
+        </div>
+        <div class="sub-score">
+          <div class="sub-score-label">Content</div>
+          <div class="sub-score-value" style="color: var(--yellow)">55</div>
+          <div class="sub-score-bar"><div class="sub-score-bar-fill" style="width:55%; background: var(--yellow)"></div></div>
+        </div>
+        <div class="sub-score">
+          <div class="sub-score-label">Architecture</div>
+          <div class="sub-score-value" style="color: var(--yellow)">50</div>
+          <div class="sub-score-bar"><div class="sub-score-bar-fill" style="width:50%; background: var(--yellow)"></div></div>
+        </div>
+        <div class="sub-score">
+          <div class="sub-score-label">Cross-Page</div>
+          <div class="sub-score-value" style="color: var(--green)">80</div>
+          <div class="sub-score-bar"><div class="sub-score-bar-fill" style="width:80%; background: var(--green)"></div></div>
+        </div>
+        <div class="sub-score">
+          <div class="sub-score-label">Social/Schema</div>
+          <div class="sub-score-value" style="color: var(--red)">22</div>
+          <div class="sub-score-bar"><div class="sub-score-bar-fill" style="width:22%; background: var(--red)"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tabs-inner">
+    <button class="tab-btn active" onclick="switchTab('executive')">Executive Summary</button>
+    <button class="tab-btn" onclick="switchTab('competitors')">Competitors <span class="tab-count">3</span></button>
+    <button class="tab-btn" onclick="switchTab('technical')">Technical <span class="tab-count">9</span></button>
+    <button class="tab-btn" onclick="switchTab('content')">Content Strategy</button>
+    <button class="tab-btn" onclick="switchTab('keywords')">Keywords & LSI</button>
+    <button class="tab-btn" onclick="switchTab('actions')">Action Plan</button>
+  </div>
+</div>
+
+<!-- EXECUTIVE SUMMARY -->
+<div id="tab-executive" class="tab-content active">
+<div class="container">
+  <div class="fixed-banner">
+    <span style="font-size: 18px;">&#10003;</span>
+    <span><strong>8 fixes applied automatically</strong> to index.html during this audit: schema markup, canonical tag, OG image/URL, Twitter cards, trimmed meta description, descriptive image alt texts, lazy loading, and robots.txt + sitemap.xml created.</span>
+  </div>
+
+  <div class="section-title">Executive Summary</div>
+  <div class="section-subtitle">Palm &amp; Passport — Panama relocation concierge for US, Canadian, and European expats</div>
+
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-value">1</div><div class="stat-label">Pages Audited</div></div>
+    <div class="stat-card"><div class="stat-value" style="color:var(--red)">3</div><div class="stat-label">Critical Issues</div></div>
+    <div class="stat-card"><div class="stat-value" style="color:var(--orange)">5</div><div class="stat-label">High Priority</div></div>
+    <div class="stat-card"><div class="stat-value" style="color:var(--yellow)">4</div><div class="stat-label">Warnings</div></div>
+    <div class="stat-card"><div class="stat-value">916</div><div class="stat-label">Word Count</div></div>
+    <div class="stat-card"><div class="stat-value" style="color:var(--green)">71</div><div class="stat-label">Post-Fix Score</div></div>
+  </div>
+
+  <div class="card" style="margin-bottom: 24px;">
+    <div class="card-title" style="margin-bottom: 16px;">Key Findings</div>
+    <div style="color: var(--text-secondary); font-size: 15px; line-height: 1.8;">
+      The Palm &amp; Passport landing page has strong on-page content — a keyword-optimized title ("Panama Relocation Concierge"), a well-structured heading hierarchy, and a compelling brand voice. However, it was missing every major technical SEO layer: no JSON-LD schema, no canonical tag, no Twitter cards, incomplete Open Graph tags, no sitemap.xml, and no robots.txt. All three top-ranking competitors (StartAbroad, AskPanama, RetireInPanama) have full schema suites with FAQPage, Organization, and WebPage markup, giving them featured snippet eligibility that Palm &amp; Passport currently lacks. Word count at ~916 words is significantly below the competitor average of 1,500–2,200 words. The most impactful remaining opportunity is adding a FAQ section and visa-specific content (Friendly Nations Visa, Pensionado Visa) — these are present on every competing page and represent both content depth and structured-data ranking opportunities.
+    </div>
+  </div>
+
+  <div class="section-title" style="font-size: 18px; margin-top: 32px;">Top 3 Priorities</div>
+  <div class="section-subtitle">Highest-impact actions remaining after auto-fixes</div>
+
+  <div class="action-item">
+    <div class="action-number">1</div>
+    <div class="action-content">
+      <div class="action-title">Add a FAQ section with visa types (Friendly Nations, Pensionado, Investor)</div>
+      <div class="action-desc">All 3 competitors have a dedicated FAQ section, and AskPanama ranks with a FAQPage schema that generates rich search results. The schema was already added — now it needs matching visible FAQ content on the page. Cover: "What visas are available?", "How long does residency take?", "Do I need to speak Spanish?"</div>
+      <div class="action-impact">Expected impact: Featured snippet eligibility + 15–25% CTR improvement for "Panama residency visa" searches</div>
+    </div>
+    <span class="badge badge-critical">Critical</span>
+  </div>
+
+  <div class="action-item">
+    <div class="action-number">2</div>
+    <div class="action-content">
+      <div class="action-title">Expand word count to 1,400+ with visa, cost, and process detail</div>
+      <div class="action-desc">At 916 words, the page is thin versus the 1,500–2,200 word average of top-ranking pages. Add sections on: specific visa programs, typical timeline, cost of living in Panama City vs. interior, and what makes Panama ideal for families vs. retirees vs. digital nomads. These topics are in every competitor and are direct keyword magnets.</div>
+      <div class="action-impact">Expected impact: Topical authority signals to Google — pages with more semantic depth outrank thinner ones on competitive terms</div>
+    </div>
+    <span class="badge badge-high">High</span>
+  </div>
+
+  <div class="action-item">
+    <div class="action-number">3</div>
+    <div class="action-content">
+      <div class="action-title">Update og:image and twitter:image to absolute production URL once domain is live</div>
+      <div class="action-desc">The OG and Twitter image tags were added pointing to <code style="font-family:monospace;font-size:12px;background:rgba(255,255,255,0.05);padding:2px 6px;border-radius:4px;">https://www.mypalmandpassport.com/contact-us.webp</code>. Confirm this is the correct production domain and that the image is accessible once deployed. A bad OG image breaks link previews on WhatsApp, Facebook, and LinkedIn — critical for a referral-driven business.</div>
+      <div class="action-impact">Expected impact: Professional link previews when clients share the site — directly affects conversion from social shares</div>
+    </div>
+    <span class="badge badge-high">High</span>
+  </div>
+
+</div>
+</div>
+
+<!-- COMPETITORS -->
+<div id="tab-competitors" class="tab-content">
+<div class="container">
+  <div class="section-title">Competitor Analysis</div>
+  <div class="section-subtitle">Top-ranking pages for "Panama relocation concierge" and "Panama residency service"</div>
+
+  <div class="competitor-card">
+    <div class="competitor-title"><span class="competitor-rank">1</span> Panama Concierge Relocation Support — StartAbroad</div>
+    <div class="competitor-url">startabroad.com/services/panama-services/panama-concierge-relocation-support/</div>
+    <div class="competitor-meta">
+      <span class="competitor-meta-item"><strong>~1,500</strong> words</span>
+      <span class="competitor-meta-item"><strong>9</strong> H2 sections</span>
+      <span class="competitor-meta-item"><strong>5</strong> H3 sub-sections (process phases)</span>
+      <span class="competitor-meta-item">Schema: <strong>Organization, WebPage, BreadcrumbList, Article, VideoObject</strong></span>
+    </div>
+    <div class="competitor-topics">
+      <h5>Key Topics Covered (gaps vs. Palm &amp; Passport)</h5>
+      <div class="lsi-cloud">
+        <span class="keyword-tag">Pricing ($3,950 flat)</span>
+        <span class="keyword-tag">Temporary Residency Visa</span>
+        <span class="keyword-tag">Dependent visa add-ons</span>
+        <span class="keyword-tag">5-phase process (Discovery → Settling In)</span>
+        <span class="keyword-tag">Post-arrival 30-day support</span>
+        <span class="keyword-tag">Client testimonials</span>
+        <span class="keyword-tag">FAQ section</span>
+        <span class="keyword-tag">Video content</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="competitor-card">
+    <div class="competitor-title"><span class="competitor-rank">2</span> Ask Panama — Residency, Business Setup & VIP Relocation</div>
+    <div class="competitor-url">askpanama.com</div>
+    <div class="competitor-meta">
+      <span class="competitor-meta-item"><strong>~2,100</strong> words</span>
+      <span class="competitor-meta-item"><strong>10</strong> H2 sections</span>
+      <span class="competitor-meta-item"><strong>11</strong> H3 sub-sections</span>
+      <span class="competitor-meta-item">Schema: <strong>Organization, WebPage, WebSite, BreadcrumbList, FAQPage</strong></span>
+    </div>
+    <div class="competitor-topics">
+      <h5>Key Topics Covered (gaps vs. Palm &amp; Passport)</h5>
+      <div class="lsi-cloud">
+        <span class="keyword-tag">0% foreign income tax</span>
+        <span class="keyword-tag">Friendly Nations Visa</span>
+        <span class="keyword-tag">Pensionado Visa</span>
+        <span class="keyword-tag">Digital Nomad Visa</span>
+        <span class="keyword-tag">Investor Visa</span>
+        <span class="keyword-tag">Business formation</span>
+        <span class="keyword-tag">Banking setup</span>
+        <span class="keyword-tag">Flat-fee contract</span>
+        <span class="keyword-tag">Multilingual team</span>
+        <span class="keyword-tag">Featured Packages</span>
+        <span class="keyword-tag">FAQ (5 questions with FAQPage schema)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="competitor-card">
+    <div class="competitor-title"><span class="competitor-rank">3</span> Retire in Panama — Panama Relocation Experts</div>
+    <div class="competitor-url">retireinpanamatours.com</div>
+    <div class="competitor-meta">
+      <span class="competitor-meta-item"><strong>~3,000</strong> words</span>
+      <span class="competitor-meta-item">Schema: <strong>Organization, WebPage, WebSite, BreadcrumbList</strong></span>
+      <span class="competitor-meta-item">Social: <strong>Facebook Pixel + Instagram</strong></span>
+    </div>
+    <div class="competitor-topics">
+      <h5>Key Topics Covered (gaps vs. Palm &amp; Passport)</h5>
+      <div class="lsi-cloud">
+        <span class="keyword-tag">Small group tours</span>
+        <span class="keyword-tag">Private relocation tours</span>
+        <span class="keyword-tag">Panama City neighborhoods</span>
+        <span class="keyword-tag">Chiriquí Highlands</span>
+        <span class="keyword-tag">Boquete</span>
+        <span class="keyword-tag">25+ years experience</span>
+        <span class="keyword-tag">Pensionado program</span>
+        <span class="keyword-tag">Geographic guides</span>
+        <span class="keyword-tag">WooCommerce (paid tours)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 32px;">
+    <div class="card-title" style="margin-bottom: 16px;">What Palm &amp; Passport Has That Competitors Don't</div>
+    <div style="color: var(--text-secondary); font-size: 14px; line-height: 1.8;">
+      <p style="margin-bottom: 12px;">&#9733; <strong style="color:var(--text)">Single trusted advisor model</strong> — Maale Jaramillo is the face and voice throughout. This personal brand trust signal is a differentiator competitors lack.</p>
+      <p style="margin-bottom: 12px;">&#9733; <strong style="color:var(--text)">Premium, editorial design</strong> — Arguably the most polished visual experience among competitors. High dwell time signals to Google.</p>
+      <p style="margin-bottom: 12px;">&#9733; <strong style="color:var(--text)">Verified Google Reviews embedded</strong> — Direct Google review links with star ratings build E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness).</p>
+      <p>&#9733; <strong style="color:var(--text)">"Curated Journey" process framework</strong> — Competitors show generic phases; Palm &amp; Passport's named framework (Discovery, Blueprint, Execution, Integration) is memorable and ownable.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- TECHNICAL -->
+<div id="tab-technical" class="tab-content">
+<div class="container">
+  <div class="section-title">Technical SEO</div>
+  <div class="section-subtitle">Pre-audit baseline → post-audit status for all technical checks</div>
+
+  <div class="card">
+    <div class="card-title" style="margin-bottom: 20px;">Implementation Checklist</div>
+
+    <div class="checklist-item">
+      <div class="check-icon done">&#10003;</div>
+      <div class="check-text"><strong>Schema / Structured Data</strong> — <span class="badge badge-done" style="font-size:11px;">Fixed in this audit</span><br><span style="color:var(--text-secondary);font-size:13px;">Added full JSON-LD schema graph: ProfessionalService, WebPage, WebSite, and FAQPage with 4 Q&amp;As. All top competitors have schema suites — this was the single biggest ranking gap.</span></div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-icon done">&#10003;</div>
+      <div class="check-text"><strong>Canonical Tag</strong> — <span class="badge badge-done" style="font-size:11px;">Fixed in this audit</span><br><span style="color:var(--text-secondary);font-size:13px;">Added <code style="font-family:monospace;font-size:12px;background:rgba(255,255,255,0.05);padding:1px 5px;border-radius:3px;">&lt;link rel="canonical" href="https://www.mypalmandpassport.com/"&gt;</code>. Prevents duplicate-content penalties if the page is accessible via multiple URLs.</span></div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-icon done">&#10003;</div>
+      <div class="check-text"><strong>Open Graph Image + URL</strong> — <span class="badge badge-done" style="font-size:11px;">Fixed in this audit</span><br><span style="color:var(--text-secondary);font-size:13px;">Added og:image (contact-us.webp), og:url, and og:site_name. Without these, link previews on WhatsApp/Facebook/LinkedIn showed no image.</span></div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-icon done">&#10003;</div>
+      <div class="check-text"><strong>Twitter Card Tags</strong> — <span class="badge badge-done" style="font-size:11px;">Fixed in this audit</span><br><span style="color:var(--text-secondary);font-size:13px;">Added twitter:card (summary_large_image), twitter:title, twitter:description, and twitter:image.</span></div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-icon done">&#10003;</div>
+      <div class="check-text"><strong>Meta Description Length</strong> — <span class="badge badge-done" style="font-size:11px;">Fixed in this audit</span><br><span style="color:var(--text-secondary);font-size:13px;">Trimmed from 169 chars to 139 chars (target: 120–160). Google truncates anything over 160 in search results, cutting off the CTA.</span></div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-icon done">&#10003;</div>
+      <div class="check-text"><strong>Image Alt Texts</strong> — <span class="badge badge-done" style="font-size:11px;">Fixed in this audit</span><br><span style="color:var(--text-secondary);font-size:13px;">Testimonial images had generic alt values ("zeph-alicia", "richard", "kevin"). Updated to descriptive alts with keyword context for image search and accessibility.</span></div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-icon done">&#10003;</div>
+      <div class="check-text"><strong>Lazy Loading on Images</strong> — <span class="badge badge-done" style="font-size:11px;">Fixed in this audit</span><br><span style="color:var(--text-secondary);font-size:13px;">Added loading="lazy" to testimonial avatar images. Improves page load performance for below-the-fold content.</span></div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-icon done">&#10003;</div>
+      <div class="check-text"><strong>robots.txt</strong> — <span class="badge badge-done" style="font-size:11px;">Created in this audit</span><br><span style="color:var(--text-secondary);font-size:13px;">Created robots.txt with Allow: / and sitemap reference. Previously missing, which is a warning signal for search engines.</span></div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-icon done">&#10003;</div>
+      <div class="check-text"><strong>sitemap.xml</strong> — <span class="badge badge-done" style="font-size:11px;">Created in this audit</span><br><span style="color:var(--text-secondary);font-size:13px;">Created sitemap.xml listing the homepage with lastmod date. Submit to Google Search Console after deployment.</span></div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-icon pass">&#10003;</div>
+      <div class="check-text"><strong>Viewport Meta Tag</strong> — Present and correct</div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-icon pass">&#10003;</div>
+      <div class="check-text"><strong>Language Attribute</strong> — <code style="font-family:monospace;font-size:12px;background:rgba(255,255,255,0.05);padding:1px 5px;border-radius:3px;">lang="en"</code> on &lt;html&gt; tag</div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-icon pass">&#10003;</div>
+      <div class="check-text"><strong>Preconnect / Preload Hints</strong> — Google Fonts preconnect and hero image preload present</div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-icon pass">&#10003;</div>
+      <div class="check-text"><strong>WebP Images</strong> — Most images use .webp format (contact-us.webp, solution cards, etc.)</div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-icon warn">!</div>
+      <div class="check-text check-text"><strong>Duplicate &lt;head&gt; Section</strong> <span class="badge badge-warning" style="font-size:11px;">Warning</span><br><span style="color:var(--text-secondary);font-size:13px;">The HTML file has a second &lt;head&gt; block starting at line 1712, nested inside the main &lt;head&gt;. This appears to be a build artifact (duplicate CSS + meta injection). Browsers parse it without errors due to HTML5 fault tolerance, but it's non-standard and should be cleaned up.</span></div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-icon warn">!</div>
+      <div class="check-text"><strong>Favicon Format</strong> <span class="badge badge-warning" style="font-size:11px;">Warning</span><br><span style="color:var(--text-secondary);font-size:13px;">Using the logo PNG as favicon. Best practice is a dedicated favicon.ico (16x16, 32x32) and an apple-touch-icon (180x180) for mobile home screen bookmarks.</span></div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-icon fail">&#10007;</div>
+      <div class="check-text"><strong>Security Headers</strong> <span class="badge badge-high" style="font-size:11px;">High</span><br><span style="color:var(--text-secondary);font-size:13px;">HSTS, CSP, X-Content-Type-Options not detectable from local file. Configure these at the hosting/CDN level (Cloudflare, Netlify, Vercel) before launch. Google considers HTTPS and security posture as trust signals.</span></div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-icon fail">&#10007;</div>
+      <div class="check-text"><strong>Breadcrumb Markup</strong> <span class="badge badge-low" style="font-size:11px;">Low</span><br><span style="color:var(--text-secondary);font-size:13px;">No breadcrumb schema. Less important for a single-page site but competitors use it for multi-page navigation signals.</span></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- CONTENT STRATEGY -->
+<div id="tab-content" class="tab-content">
+<div class="container">
+  <div class="section-title">Content Strategy</div>
+  <div class="section-subtitle">What to add to match and surpass competitors in topical depth</div>
+
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-value" style="color:var(--yellow)">916</div><div class="stat-label">Current Word Count</div></div>
+    <div class="stat-card"><div class="stat-value">1,700</div><div class="stat-label">Competitor Average</div></div>
+    <div class="stat-card"><div class="stat-value" style="color:var(--red)">0</div><div class="stat-label">FAQ Items (Visible)</div></div>
+    <div class="stat-card"><div class="stat-value" style="color:var(--green)">4</div><div class="stat-label">FAQ Schema Added</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title" style="margin-bottom: 16px;">Content Gaps vs. Competitors</div>
+
+    <div class="finding">
+      <div class="finding-status fail"></div>
+      <div class="finding-content">
+        <h4>No visible FAQ section</h4>
+        <p>All 3 competitors dedicate a full section to FAQs. AskPanama's FAQPage schema generates rich results (expandable answers) in Google search. A FAQ section with the 4 schema Q&amp;As already added is the fastest path to featured snippet eligibility.</p>
+        <div class="finding-rec">Add a visible FAQ section to the page (between "The Curated Journey" and the final CTA) with these 4 questions: visa types, what's included, timeline, language barrier. The FAQPage schema is already embedded — adding visible HTML makes it complete.</div>
+      </div>
+      <span class="badge badge-critical">Critical</span>
+    </div>
+
+    <div class="finding">
+      <div class="finding-status fail"></div>
+      <div class="finding-content">
+        <h4>No specific visa program names</h4>
+        <p>Every competitor explicitly mentions: Friendly Nations Visa, Pensionado Visa, Investor Visa, and Digital Nomad/Remote Worker Visa. These are high-intent search terms that people use when researching Panama relocation. The Palm &amp; Passport page uses generic "residency" language instead.</p>
+        <div class="finding-rec">Add visa-type names to the "Legal Strategy &amp; Residency" card and/or a dedicated "Panama Residency Visas" subsection. At minimum: "Friendly Nations Visa", "Pensionado Visa", "Qualified Investor Visa".</div>
+      </div>
+      <span class="badge badge-high">High</span>
+    </div>
+
+    <div class="finding">
+      <div class="finding-status fail"></div>
+      <div class="finding-content">
+        <h4>No cost of living / pricing context</h4>
+        <p>StartAbroad shows pricing ($3,950). AskPanama shows packages. Retire in Panama offers purchasable tours. Cost-related searches ("Panama relocation cost", "how much to move to Panama") have high search volume and the page misses them entirely.</p>
+        <div class="finding-rec">Add a brief "Why Panama Makes Financial Sense" callout near the Why Panama section: typical cost of living ranges, what the service package includes, and a CTA to "Request a custom quote."</div>
+      </div>
+      <span class="badge badge-high">High</span>
+    </div>
+
+    <div class="finding">
+      <div class="finding-status warning"></div>
+      <div class="finding-content">
+        <h4>No geographic specificity (Panama City, Chiriquí, Boquete)</h4>
+        <p>Competitors rank for location-specific searches by naming neighborhoods and regions. This is especially valuable for retirees searching "best place to retire in Panama" and families searching "best neighborhood in Panama City for expats".</p>
+        <div class="finding-rec">Add 1–2 sentences in the "Real Estate &amp; Lifestyle" card that mention Panama City, Chiriquí Highlands, Bocas del Toro as examples of regions Maale knows. This adds geographic LSI keywords with minimal copy.</div>
+      </div>
+      <span class="badge badge-medium">Medium</span>
+    </div>
+
+    <div class="finding">
+      <div class="finding-status warning"></div>
+      <div class="finding-content">
+        <h4>Word count 45% below competitor average</h4>
+        <p>At 916 words vs. a competitor average of ~1,700, the page is semantically thinner. Google uses topical depth as a ranking signal. More content = more LSI keyword coverage = more chances to rank for long-tail searches.</p>
+        <div class="finding-rec">Target 1,400–1,600 words by adding: FAQ section (~200 words), visa types paragraph (~150 words), geographic section (~100 words), cost context (~100 words). This alone would close most of the gap.</div>
+      </div>
+      <span class="badge badge-medium">Medium</span>
+    </div>
+
+    <div class="finding">
+      <div class="finding-status pass"></div>
+      <div class="finding-content">
+        <h4>Excellent heading structure</h4>
+        <p>Single H1, logical H2/H3 hierarchy across all sections (Problem, Services, Why Panama, Process, Packages, Testimonials, About, Contact). No skipped levels. Better than most competitors.</p>
+      </div>
+      <span class="badge badge-pass">Pass</span>
+    </div>
+
+    <div class="finding">
+      <div class="finding-status pass"></div>
+      <div class="finding-content">
+        <h4>Strong E-E-A-T signals</h4>
+        <p>Named founder (Maale Jaramillo), verified Google Reviews with direct Google Maps links, specific contact info (WhatsApp + email), and personal story in "Meet Your Guide" section. This is stronger than most competitors.</p>
+      </div>
+      <span class="badge badge-pass">Pass</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- KEYWORDS & LSI -->
+<div id="tab-keywords" class="tab-content">
+<div class="container">
+  <div class="section-title">Keyword Strategy</div>
+  <div class="section-subtitle">Primary keyword, secondary keywords, and LSI coverage analysis</div>
+
+  <div class="card" style="overflow-x: auto; padding: 0;">
+    <table class="page-table">
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Keyword</th>
+          <th>Density Target</th>
+          <th>In Page Now</th>
+          <th>Priority</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span style="font-weight:700;color:var(--accent)">PRIMARY</span></td>
+          <td><strong>Panama relocation concierge</strong></td>
+          <td>1.0–1.5%</td>
+          <td><span class="badge badge-warning">In title only</span></td>
+          <td><span class="badge badge-critical">Add to H1 + body</span></td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-medium">Secondary</span></td>
+          <td>Panama relocation service</td>
+          <td>0.5–1.0%</td>
+          <td><span class="badge badge-fail">Missing</span></td>
+          <td><span class="badge badge-high">Add to intro para</span></td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-medium">Secondary</span></td>
+          <td>Panama residency visa</td>
+          <td>0.5–1.0%</td>
+          <td><span class="badge badge-warning">Implied only</span></td>
+          <td><span class="badge badge-high">Add explicitly</span></td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-medium">Secondary</span></td>
+          <td>expat relocation Panama</td>
+          <td>0.3–0.5%</td>
+          <td><span class="badge badge-fail">Missing</span></td>
+          <td><span class="badge badge-medium">Add to services section</span></td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-medium">Secondary</span></td>
+          <td>move to Panama</td>
+          <td>0.3–0.5%</td>
+          <td><span class="badge badge-warning">Partial</span></td>
+          <td><span class="badge badge-medium">Reinforce in CTA copy</span></td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-low">LSI</span></td>
+          <td>Friendly Nations Visa, Pensionado Visa, Investor Visa, Digital Nomad Visa, immigration attorney, notarized documents, cost of living Panama, Panama City neighborhoods, Chiriquí, Boquete, expat community, flat-fee, banking setup, healthcare setup</td>
+          <td>1–3x each</td>
+          <td><span class="badge badge-fail">Most missing</span></td>
+          <td><span class="badge badge-high">Add via FAQ + content expansion</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <div class="section-title" style="font-size:20px;">LSI Keyword Cloud</div>
+    <div class="section-subtitle">Green = present in page &nbsp;|&nbsp; Purple = added via schema &nbsp;|&nbsp; Red = still missing</div>
+    <div class="lsi-cloud">
+      <span class="lsi-tag integrated">residency</span>
+      <span class="lsi-tag integrated">real estate</span>
+      <span class="lsi-tag integrated">lifestyle integration</span>
+      <span class="lsi-tag integrated">concierge</span>
+      <span class="lsi-tag integrated">tax efficiency</span>
+      <span class="lsi-tag integrated">healthcare</span>
+      <span class="lsi-tag integrated">business-friendly</span>
+      <span class="lsi-tag integrated">visa</span>
+      <span class="lsi-tag integrated">residency strategy</span>
+      <span class="lsi-tag integrated">legal coordination</span>
+      <span class="lsi-tag integrated">expat</span>
+      <span class="lsi-tag integrated">immigration</span>
+      <span class="lsi-tag added">Friendly Nations Visa</span>
+      <span class="lsi-tag added">Pensionado Visa</span>
+      <span class="lsi-tag added">Investor Visa</span>
+      <span class="lsi-tag added">Digital Nomad Visa</span>
+      <span class="lsi-tag added">relocation specialist</span>
+      <span class="lsi-tag added">Panama relocation service</span>
+      <span class="lsi-tag missing">Panama City</span>
+      <span class="lsi-tag missing">Chiriquí</span>
+      <span class="lsi-tag missing">Boquete</span>
+      <span class="lsi-tag missing">cost of living</span>
+      <span class="lsi-tag missing">banking setup</span>
+      <span class="lsi-tag missing">immigration attorney</span>
+      <span class="lsi-tag missing">notarized documents</span>
+      <span class="lsi-tag missing">flat-fee</span>
+      <span class="lsi-tag missing">expat community</span>
+      <span class="lsi-tag missing">Pensionado program</span>
+      <span class="lsi-tag missing">apostille</span>
+      <span class="lsi-tag missing">territorial taxation</span>
+      <span class="lsi-tag missing">moving checklist</span>
+    </div>
+    <div style="margin-top: 16px; font-size: 13px; color: var(--text-muted);">
+      <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--green);margin-right:6px;"></span>Green = already in page &nbsp;&nbsp;
+      <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--accent);margin-right:6px;"></span>Purple = added in schema (FAQPage) this audit &nbsp;&nbsp;
+      <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--red);margin-right:6px;"></span>Red = still missing from page content
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ACTION PLAN -->
+<div id="tab-actions" class="tab-content">
+<div class="container">
+  <div class="section-title">Prioritized Action Plan</div>
+  <div class="section-subtitle">Everything ranked by impact — quick wins first</div>
+
+  <div class="fixed-banner">
+    <span style="font-size: 18px;">&#9889;</span>
+    <strong>Already done:</strong> Schema JSON-LD, canonical tag, OG image/URL, Twitter cards, meta description fix, alt text fixes, lazy loading, robots.txt, sitemap.xml
+  </div>
+
+  <div class="section-title" style="font-size: 18px; color: var(--green); margin-top: 8px;">Quick Wins <span style="font-size: 14px; color: var(--text-muted); font-weight: 400;">— under 1 hour each</span></div>
+  <div style="margin-bottom: 32px;">
+
+    <div class="action-item">
+      <div class="action-number">1</div>
+      <div class="action-content">
+        <div class="action-title">Submit sitemap to Google Search Console</div>
+        <div class="action-desc">Once the site is live, go to Google Search Console → Sitemaps → submit https://www.mypalmandpassport.com/sitemap.xml. This tells Google exactly what to index and is the fastest way to get the page crawled after launch.</div>
+        <div class="action-impact">Expected impact: Faster indexing — days vs. weeks</div>
+      </div>
+      <span class="badge badge-critical">Critical</span>
+    </div>
+
+    <div class="action-item">
+      <div class="action-number">2</div>
+      <div class="action-content">
+        <div class="action-title">Add visible FAQ section matching the FAQPage schema</div>
+        <div class="action-desc">The FAQPage schema is already in the HTML — add a matching visible section so Google can verify the schema answers match the visible content. Use the 4 Q&amp;As already in the schema: visa types, what's included, timeline, Spanish language barrier.</div>
+        <div class="action-impact">Expected impact: Featured snippet eligibility for "Panama relocation FAQ" and related informational queries</div>
+      </div>
+      <span class="badge badge-critical">Critical</span>
+    </div>
+
+    <div class="action-item">
+      <div class="action-number">3</div>
+      <div class="action-content">
+        <div class="action-title">Verify and update og:url / canonical once production domain is confirmed</div>
+        <div class="action-desc">Both are currently set to https://www.mypalmandpassport.com/. If the actual domain is different, update both tags in index.html before launch. Search for "mypalmandpassport.com" in the file to find all occurrences.</div>
+        <div class="action-impact">Expected impact: Prevents canonical mismatch penalties and ensures social shares use the correct URL</div>
+      </div>
+      <span class="badge badge-high">High</span>
+    </div>
+
+  </div>
+
+  <div class="section-title" style="font-size: 18px; color: var(--orange);">High Impact <span style="font-size: 14px; color: var(--text-muted); font-weight: 400;">— 1–3 hours total</span></div>
+  <div style="margin-bottom: 32px;">
+
+    <div class="action-item">
+      <div class="action-number">4</div>
+      <div class="action-content">
+        <div class="action-title">Add specific visa program names to the "Legal Strategy & Residency" card</div>
+        <div class="action-desc">In the services card description for "Legal Strategy & Residency", add: "We identify whether the Friendly Nations Visa, Pensionado Visa, Qualified Investor Visa, or Remote Worker Visa is right for you." These exact phrases are what people search — and every competitor uses them.</div>
+        <div class="action-impact">Expected impact: Ranks for "Friendly Nations Visa service Panama" and similar high-intent queries</div>
+      </div>
+      <span class="badge badge-high">High</span>
+    </div>
+
+    <div class="action-item">
+      <div class="action-number">5</div>
+      <div class="action-content">
+        <div class="action-title">Add geographic specificity to the "Real Estate & Lifestyle" card</div>
+        <div class="action-desc">Mention specific regions: Panama City (Costa del Este, Casco Viejo, El Cangrejo), Chiriquí Highlands (Boquete, Volcán), and Bocas del Toro. Even one sentence per region adds valuable location LSI keywords and signals to searchers that Maale knows the geography.</div>
+        <div class="action-impact">Expected impact: Ranks for "best neighborhoods Panama for expats" and similar location-specific searches</div>
+      </div>
+      <span class="badge badge-high">High</span>
+    </div>
+
+    <div class="action-item">
+      <div class="action-number">6</div>
+      <div class="action-content">
+        <div class="action-title">Add cost context near the "Why Panama" section</div>
+        <div class="action-desc">Add a short callout: "Cost of living in Panama is 40–60% lower than the US or Western Europe — a 2-bedroom apartment in Panama City starts around $900/month, while Chiriquí offers even more for less." This targets high-intent searches around Panama relocation costs.</div>
+        <div class="action-impact">Expected impact: Captures "Panama cost of living expats" searches (high volume, high intent)</div>
+      </div>
+      <span class="badge badge-medium">Medium</span>
+    </div>
+
+  </div>
+
+  <div class="section-title" style="font-size: 18px; color: var(--purple);">Strategic Initiatives <span style="font-size: 14px; color: var(--text-muted); font-weight: 400;">— ongoing</span></div>
+  <div style="margin-bottom: 32px;">
+
+    <div class="action-item">
+      <div class="action-number">7</div>
+      <div class="action-content">
+        <div class="action-title">Set up Google Search Console + Google Business Profile</div>
+        <div class="action-desc">Register the site in Google Search Console for indexing control, Core Web Vitals data, and keyword performance tracking. Also create/claim a Google Business Profile for "Palm & Passport" — this activates local pack results and adds social proof via Google Maps reviews (which are already linked on the site).</div>
+        <div class="action-impact">Expected impact: Local SEO visibility for "Panama relocation service near me" and Google Map Pack presence</div>
+      </div>
+      <span class="badge badge-high">High</span>
+    </div>
+
+    <div class="action-item">
+      <div class="action-number">8</div>
+      <div class="action-content">
+        <div class="action-title">Create a second page: "Panama Relocation Guide" or "Panama Visa Types"</div>
+        <div class="action-desc">A single-page site has a ceiling on how many keywords it can rank for. A blog/guide page targeting "How to relocate to Panama from the US" or "Panama Friendly Nations Visa guide" would unlock informational search traffic that feeds the main landing page with qualified visitors.</div>
+        <div class="action-impact">Expected impact: 3–5x organic traffic potential by targeting informational queries that currently send people to competitors</div>
+      </div>
+      <span class="badge badge-medium">Medium</span>
+    </div>
+
+    <div class="action-item">
+      <div class="action-number">9</div>
+      <div class="action-content">
+        <div class="action-title">Build backlinks from expat directories and Panama tourism sites</div>
+        <div class="action-desc">Submit to: International Living (Panama section), iGoPanama.com directory, Expat Exchange Panama, and Panama tourism boards. Guest posts on expat lifestyle blogs with links back to mypalmandpassport.com. Backlinks remain the #1 off-page ranking factor.</div>
+        <div class="action-impact">Expected impact: Domain authority growth — necessary to outrank established competitors with years of link history</div>
+      </div>
+      <span class="badge badge-medium">Medium</span>
+    </div>
+
+  </div>
+
+  <div class="section-title" style="font-size: 18px; margin-top: 16px;">Full Implementation Checklist</div>
+  <div class="card">
+    <div class="checklist-item"><div class="check-icon done">&#10003;</div><div class="check-text">JSON-LD schema (ProfessionalService, WebPage, WebSite, FAQPage) — Added</div></div>
+    <div class="checklist-item"><div class="check-icon done">&#10003;</div><div class="check-text">Canonical tag — Added</div></div>
+    <div class="checklist-item"><div class="check-icon done">&#10003;</div><div class="check-text">og:image, og:url, og:site_name, og:locale — Added</div></div>
+    <div class="checklist-item"><div class="check-icon done">&#10003;</div><div class="check-text">Twitter Card (summary_large_image) — Added</div></div>
+    <div class="checklist-item"><div class="check-icon done">&#10003;</div><div class="check-text">Meta description trimmed to 139 chars — Fixed</div></div>
+    <div class="checklist-item"><div class="check-icon done">&#10003;</div><div class="check-text">Testimonial image alt texts — Fixed</div></div>
+    <div class="checklist-item"><div class="check-icon done">&#10003;</div><div class="check-text">Lazy loading on testimonial images — Added</div></div>
+    <div class="checklist-item"><div class="check-icon done">&#10003;</div><div class="check-text">robots.txt created</div></div>
+    <div class="checklist-item"><div class="check-icon done">&#10003;</div><div class="check-text">sitemap.xml created</div></div>
+    <div class="checklist-item"><div class="check-icon fail">&#10007;</div><div class="check-text check-text">Add visible FAQ section to the page (matching FAQPage schema already embedded)</div></div>
+    <div class="checklist-item"><div class="check-icon fail">&#10007;</div><div class="check-text">Add Friendly Nations Visa, Pensionado Visa, Investor Visa to residency service description</div></div>
+    <div class="checklist-item"><div class="check-icon fail">&#10007;</div><div class="check-text">Add geographic specificity (Panama City neighborhoods, Chiriquí, Boquete) to real estate card</div></div>
+    <div class="checklist-item"><div class="check-icon fail">&#10007;</div><div class="check-text">Add cost of living context to Why Panama section</div></div>
+    <div class="checklist-item"><div class="check-icon fail">&#10007;</div><div class="check-text">Verify og:url and canonical match production domain before launch</div></div>
+    <div class="checklist-item"><div class="check-icon fail">&#10007;</div><div class="check-text">Submit sitemap.xml to Google Search Console after deployment</div></div>
+    <div class="checklist-item"><div class="check-icon fail">&#10007;</div><div class="check-text">Configure security headers (HSTS, CSP) at hosting/CDN level</div></div>
+    <div class="checklist-item"><div class="check-icon fail">&#10007;</div><div class="check-text">Create dedicated favicon.ico and apple-touch-icon</div></div>
+    <div class="checklist-item"><div class="check-icon fail">&#10007;</div><div class="check-text">Set up Google Business Profile for Palm &amp; Passport</div></div>
+    <div class="checklist-item"><div class="check-icon fail">&#10007;</div><div class="check-text">Clean up duplicate &lt;head&gt; section (structural artifact in HTML)</div></div>
+    <div class="checklist-item"><div class="check-icon fail">&#10007;</div><div class="check-text">Plan a second page: Panama Relocation Guide or Visa Types guide</div></div>
+    <div class="checklist-item"><div class="check-icon fail">&#10007;</div><div class="check-text">Build backlinks from expat directories (iGoPanama, International Living, Expat Exchange)</div></div>
+  </div>
+
+</div>
+</div>
+
+<script>
+function switchTab(tabId) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + tabId).classList.add('active');
+  event.target.closest('.tab-btn').classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+document.querySelectorAll('.collapsible-header').forEach(h => {
+  h.addEventListener('click', () => h.closest('.collapsible').classList.toggle('open'));
+});
+</script>
+</body>
+</html>
